@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Party Manager para Jogadores Solo
 
-## Getting Started
+## Descrição do Projeto
+Este projeto é um **Party Manager** desenvolvido para facilitar a vida de jogadores solo ou casuais que só têm tempo para grindar em eventos como dungeons, especialmente nos finais de semana. Com ele, os jogadores podem agendar grupos, receber notificações via **Discord** e se organizar de forma mais eficiente para eventos temporários.
 
-First, run the development server:
+A ideia central do projeto é permitir que os jogadores agendem eventos, com a criação automática de salas no Discord e notificações por webhook. As salas serão criadas automaticamente para os grupos, e, após o término do evento, essas salas serão deletadas para manter o ambiente organizado.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Funcionalidades
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Agendamento de Grupos:** Permite que jogadores agendem um grupo específico para fazer dungeons.
+- **Criação Automática de Sala no Discord:** A API do Discord cria automaticamente uma sala para o grupo em um servidor comunitário, onde os jogadores podem se organizar.
+- **Notificações via Webhook:** O sistema envia notificações no Discord para avisar os jogadores com 1 hora de antecedência e também notifica se alguém desistir do evento.
+- **Deleção Automática da Sala:** Após o término do evento, a sala criada será automaticamente deletada para manter o servidor limpo.
+- **Reservas de Jogadores:** O sistema permite adicionar jogadores na reserva, caso algum participante desista de última hora.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tecnologias Utilizadas
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Next.js** para toda a lógica de backend usando o **API Router**.
+- **API do Discord** para criação e deleção de canais e gerenciamento de permissões.
+- **Webhooks** do Discord para enviar notificações automáticas aos jogadores.
 
-## Learn More
+## Como Funciona
 
-To learn more about Next.js, take a look at the following resources:
+1. **Formação do Grupo:**
+   - O jogador agenda um evento, como uma dungeon, e convida até 5 participantes. O grupo pode ter até 5 jogadores na reserva.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Criação da Sala no Discord:**
+   - A API do Discord cria automaticamente uma sala no servidor comunitário, exclusiva para os jogadores daquele evento. A sala pode ser de texto ou voz, conforme a necessidade do grupo.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. **Notificações via Webhook:**
+   - Os jogadores recebem uma notificação via Discord com 1 hora de antecedência do evento.
+   - Se algum jogador desistir, o sistema avisa automaticamente os outros membros.
 
-## Deploy on Vercel
+4. **Término do Evento:**
+   - Quando o evento termina, o sistema deleta automaticamente a sala que foi criada para o grupo, mantendo o servidor organizado.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<!-- ## Pré-requisitos
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Node.js** instalado
+- **Next.js** instalado
+- Um **bot** configurado no Discord com permissões adequadas (gerenciar canais, enviar mensagens, etc.)
+- Um **servidor comunitário** no Discord para hospedar as salas de evento -->
+
+<!-- ## Instalação
+
+1. Clone o repositório:
+
+   ```bash
+   git clone https://github.com/usuario/party-manager.git -->
