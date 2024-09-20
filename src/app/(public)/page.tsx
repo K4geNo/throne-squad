@@ -1,15 +1,11 @@
-import { Button } from "@/components/ui/button"
+import SignInButton from "@/components/sign-in-button"
 import {
 	Card,
 	CardContent,
 	CardDescription,
-	CardFooter,
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import Link from "next/link"
 
 export default function Home() {
 	return (
@@ -37,7 +33,7 @@ export default function Home() {
 				</div>
 			</section>
 
-			<form className="flex w-full items-center justify-center">
+			<section className="flex w-full items-center justify-center">
 				<Card className="dark mx-auto max-w-sm">
 					<CardHeader>
 						<CardTitle className="text-2xl">Entrar</CardTitle>
@@ -46,14 +42,10 @@ export default function Home() {
 						</CardDescription>
 					</CardHeader>
 					<CardContent>
-						<div className="grid gap-4">
-							<Button variant="outline" className="h-10 w-full">
-								Entrar com Discord
-							</Button>
-						</div>
+						<SignInButton />
 					</CardContent>
 				</Card>
-			</form>
+			</section>
 		</main>
 	)
 }
