@@ -9,20 +9,17 @@ export default auth((request) => {
 	const { auth } = request
 	const nextUrl = (path: string) => new URL(path, origin).toString()
 
-	const protectedRoutes = ["/", "/dashboard", "/profile"] // Adicione suas rotas protegidas aqui
+	const protectedRoutes = ["/"]
 	const isProtectedRoute = protectedRoutes.includes(pathname)
 
-	// Redirecionar se o usuário não estiver autenticado e estiver acessando uma rota protegida
 	if (!auth && isProtectedRoute) {
 		return Response.redirect(nextUrl("/login"))
 	}
 
-	// Redirecionar para registro se autenticado mas sem username
 	if (auth && !auth.user?.username && pathname !== "/register") {
 		return Response.redirect(nextUrl("/register"))
 	}
 
-	// Redirecionar se o usuário já está autenticado e tenta acessar a rota raiz
 	if (auth?.user?.username && pathname === "/") {
 		return Response.redirect(nextUrl("/"))
 	}
